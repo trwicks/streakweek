@@ -1,0 +1,16 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "australia-southeast1-docker.pkg.dev/test-project-goat/test-registry/frontend",
+        ".",
+      ]
+    timeout: 500s
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "australia-southeast1-docker.pkg.dev/test-project-goat/test-registry/frontend",
+      ]

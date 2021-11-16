@@ -1,0 +1,11 @@
+
+resources:
+  - gw-deploy.yaml
+  - redis-deploy.yaml
+  - gw-configmap.yaml
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+bases:
+  - ../../base
+
+resources:
+  - ingress.yaml
+
+commonLabels:
+  env: stage
+
+patchesStrategicMerge:
+  - deployment-patch.yaml
+  - ingress-patch.yaml
+
+configMapGenerator:
+- name: ui-config
+  literals:
+    - API_HOST=api.35.197.165.182.nip.io
+    - API_PORT=80
+
+images:
+  - name: ui
+    newName: australia-southeast1-docker.pkg.dev/weekstreak/ws-registry/ui
+    newTag: 0.0.1-4

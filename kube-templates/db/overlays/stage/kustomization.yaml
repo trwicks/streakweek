@@ -1,0 +1,11 @@
+---
+
+
+bases:
+  - ../../base
+
+commonLabels:
+  env: stage
+
+patchesStrategicMerge:
+  - deployment.yaml

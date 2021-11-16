@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/activity-sets",
+      "handler": "activity-set.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/activity-sets/count",
+      "handler": "activity-set.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/activity-sets/:id",
+      "handler": "activity-set.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/activity-sets",
+      "handler": "activity-set.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/activity-sets/:id",
+      "handler": "activity-set.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/activity-sets/:id",
+      "handler": "activity-set.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

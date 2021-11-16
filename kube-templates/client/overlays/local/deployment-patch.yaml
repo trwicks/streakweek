@@ -1,0 +1,38 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-deployment
+  labels:
+    app: ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ui
+  template:
+    metadata:
+      labels:
+        app: ui
+    spec:
+      containers:
+      - name: ui
+        imagePullPolicy: Always
+        image: ui
+        # command: ["/bin/sh"]
+        # args: ["-c", "ls -la ; pwd"]
+        ports:
+        - containerPort: 3000
+        env:
+        - name: REACT_APP_API_HOST
+          value: api.127.0.0.1.nip.io
+        - name: REACT_APP_API_PORT
+          value: '80'
+        volumeMounts:
+        - name: local-src
+          mountPath: /app
+      volumes:
+        - name: local-src
+          hostPath:
+            type: Directory
+            path: /host_files/src/client

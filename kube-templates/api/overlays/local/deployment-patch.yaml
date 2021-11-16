@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  labels:
+    app: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api
+        imagePullPolicy: Always
+        image: api
+        ports:
+        - containerPort: 1337
+        env:
+        - name: DATABASE_CLIENT
+          value: postgres
+        - name: DATABASE_NAME
+          valueFrom:
+            secretKeyRef:
+              name: ws-secrets
+              key: POSTGRES_DB
+        - name: DATABASE_HOST
+          value: db-service
+        - name: DATABASE_PORT
+          value: "5432"
+        - name: DATABASE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: ws-secrets
+              key: POSTGRES_USER
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ws-secrets
+              key: POSTGRES_PASSWORD
+        volumeMounts:
+          - name: local-src
+            mountPath: /srv/app
+      volumes:
+        - name: local-src
+          hostPath:
+            type: Directory
+            path: /host_files/src/backend

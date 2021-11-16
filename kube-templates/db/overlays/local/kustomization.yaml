@@ -1,0 +1,12 @@
+---
+
+
+bases:
+  - ../../base
+
+commonLabels:
+  env: dev-local
+
+patchesStrategicMerge:
+  - deployment.yaml
+  

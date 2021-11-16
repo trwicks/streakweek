@@ -1,0 +1,15 @@
+{
+  "kind": "collectionType",
+  "collectionName": "days",
+  "info": {
+    "name": "Day",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}

@@ -1,0 +1,4 @@
+creation_rules:
+  - path_regex: \.secret\.yaml$ # encrypts kube secret files
+    pgp: >-
+      EC0393296BB7CC37F580C85A45CE6B31CB2DA097

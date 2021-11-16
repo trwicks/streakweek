@@ -1,0 +1,10 @@
+
+
+resources:
+  - ingress.yaml
+
+commonLabels:
+  env: dev-local
+
+bases:
+  - ../../base

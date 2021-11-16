@@ -1,0 +1,57 @@
+version: '3'
+services:
+  strapi:
+    image: strapi/strapi
+      #build: ./src/backend
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_NAME: strapi
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
+    volumes:
+      - ./src/backend:/srv/app
+    ports:
+      - '1337:1337'
+        #    command: yarn strapi develop
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: strapi
+      POSTGRES_USER: strapi
+      POSTGRES_PASSWORD: strapi
+#    volumes:
+#      - db-data:/var/lib/postgresql/data
+
+  client:
+    build:
+      context: ./src/client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src/client:/app
+    ports:
+      - '3000:3000'
+    command: npm start
+    environment:
+      REACT_APP_API_HOST: localhost
+      REACT_APP_API_PORT: 1337
+    depends_on:
+      - strapi
+
+#  nginx:
+#    build: 
+#      context: ./src/frontend
+#      dockerfile: Dockerfile.nginx
+#    volumes:
+#      - ./src/frontend:/app
+#    ports:
+#      - '80:80'
+#    depends_on:
+#      - strapi
+
+#volumes:
+#  db-data:

@@ -1,0 +1,17 @@
+bases:
+  - ../../base
+
+commonLabels:
+  env: stage
+
+resources:
+  - ingress.yaml
+
+images:
+  - name: api
+    newName: australia-southeast1-docker.pkg.dev/weekstreak/ws-registry/api
+    newTag: 0.0.1-4
+
+patchesStrategicMerge:
+  - deployment.yaml
+  - ingress-patch.yaml

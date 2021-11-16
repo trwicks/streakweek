@@ -1,0 +1,36 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-deployment
+  labels:
+    app: ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ui
+  template:
+    metadata:
+      labels:
+        app: ui
+    spec:
+      containers:
+      - name: ui
+        imagePullPolicy: Always
+        image: ui
+        # command: ["/bin/sh"]
+        # args: ["-c", "ls -la ; pwd"]
+        ports:
+        - containerPort: 3000
+        env:
+        - name: REACT_APP_API_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: ui-config       
+              key: API_HOST
+        - name: REACT_APP_API_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: ui-config       
+              key: API_PORT

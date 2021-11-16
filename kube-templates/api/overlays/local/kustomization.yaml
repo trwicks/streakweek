@@ -1,0 +1,18 @@
+
+
+bases:
+  - ../../base
+
+commonLabels:
+  env: dev-local
+
+# resources:
+#   - ingress.yaml
+
+images:
+  - name: api
+    newName: localhost:5000/api
+    newTag: 'test'
+
+patchesStrategicMerge:
+  - deployment-patch.yaml

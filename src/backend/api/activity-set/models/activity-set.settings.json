@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "activity_sets",
+  "info": {
+    "name": "ActivitySet",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "weeks": {
+      "collection": "week",
+      "via": "activity_sets",
+      "dominant": true
+    },
+    "Type": {
+      "type": "enumeration",
+      "enum": [
+        "Study",
+        "Exercise",
+        "Dodge",
+        "Social",
+        "Mindfulness",
+        "Creative",
+        "Administration",
+        "Other"
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "weeks",
+  "info": {
+    "name": "Week",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "StreakWeek": {
+      "type": "integer",
+      "default": 1
+    },
+    "User": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "WeekStartDate": {
+      "type": "date",
+      "required": true
+    },
+    "Current": {
+      "type": "boolean",
+      "default": false
+    },
+    "activity_sets": {
+      "via": "weeks",
+      "collection": "activity-set"
+    }
+  }
+}
