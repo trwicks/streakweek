@@ -13,7 +13,7 @@ Deploy to GCP
 Replace Strapi with NestJs backend
 
 
-# Get Stuck In
+# Deployment 
 
 ## Dev
 
